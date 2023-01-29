@@ -18,7 +18,7 @@ const Task = ({text, todo, todos, setTodos}) => {
     }
     return (
         <div className="task-item">
-            <li className={`task`}>{text}</li>
+            <li className={`task ${todo.completed ? "completed" : ""}`}>{text}</li>
             <button onClick={completeHandler} className="complete-btn">
                 <i className="fas fa-check"></i>
             </button>
