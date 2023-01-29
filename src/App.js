@@ -6,11 +6,19 @@ import TodoList from './components/todolist.js';
 function App() {
 
   const [inputText, setInputText] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    return JSON.parse(localStorage.getItem('tasks')) || []
+  });; //getting data from local storage from initial setup to avoid having another initial state when the app reloads,
   const [status, setStatus] = useState("all");
   const [filteredTasks, setFilteredTasks] = useState([]);
 
-  useEffect( () => filterHandler(), [tasks, status]);
+  
+  useEffect( () => {
+    filterHandler();
+    saveLocal();
+   }, 
+   [tasks, status]
+  );
 
   const filterHandler = () => {
     switch (status) {
@@ -27,6 +35,12 @@ function App() {
         break;
     }
   }
+ 
+  //Save the tasks to local storage
+  const saveLocal = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
   return (
     <div className="App">
       Hello World!
