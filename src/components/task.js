@@ -17,7 +17,7 @@ const Task = ({text, todo, todos, setTodos}) => {
         }))
     }
     return (
-        <div className="task-item">
+        <div className="border-2 rounded-xl task-card task-item">
             <li className={`task ${todo.completed ? "completed" : ""}`}>{text}</li>
             <button onClick={completeHandler} className="complete-btn">
                 <i className="fas fa-check"></i>

@@ -1,10 +1,10 @@
 import React from 'react';
-import Task from './task.js'
+import Task from './task.js';
 
 const TodoList = ({todos, setTodos, filteredTodos}) => {
     return (
         <div className="todo-container">
-            <ul className="todo-list">
+            <ul className="todo-list grid grid-cols-1 gap-4">
                 {filteredTodos.map((todo) => ( <Task 
                                             todos = {todos} 
                                             setTodos = {setTodos} 
@@ -16,6 +16,7 @@ const TodoList = ({todos, setTodos, filteredTodos}) => {
                           )
                 }
             </ul>
+            
         </div>
     )
 }
